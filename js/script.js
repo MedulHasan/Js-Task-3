@@ -102,6 +102,10 @@ productsArray.map(product => {
 })
 
 const ul = document.getElementById('add-product-list');
+const st = document.getElementById('sub-total');
+const t = document.getElementById('total');
+const pay = document.getElementById('pay');
+let totalPrice = 0;
 function addProduct(id) {
     const singleProduct = productsArray.find(product => product.id === id);
     const li = document.createElement('li');
@@ -118,18 +122,31 @@ function addProduct(id) {
     }
     p.innerText = title || singleProduct.title;
 
-    const price = document.createElement('p');
-    price.innerText = 'BDT: ' + singleProduct.price;
+    let price = document.createElement('p');
+    const span2 = document.createElement('span');
+    price.innerText = singleProduct.price;
+    span2.innerText = 'BDT ' + price.innerText;
 
     const span = document.createElement('span');
     span.classList.add('delete-btn')
     span.innerHTML = `<i class="fas fa-trash-alt"></i>`;
-    span.addEventListener('click', () => li.remove())
+    totalPrice = totalPrice + parseFloat(price.innerText)
+    span.addEventListener('click', () => {
+        li.remove();
+        totalPrice = totalPrice - parseFloat(price.innerText);
+        st.innerText = totalPrice.toFixed(2);
+        t.innerText = totalPrice.toFixed(2);
+        pay.innerText = totalPrice.toFixed(2);
+    })
 
     li.appendChild(img);
     li.appendChild(p);
-    li.appendChild(price);
+    li.appendChild(span2);
     li.appendChild(span)
 
     ul.appendChild(li);
+
+    st.innerText = totalPrice.toFixed(2);
+    t.innerText = totalPrice.toFixed(2);
+    pay.innerText = totalPrice.toFixed(2);
 }

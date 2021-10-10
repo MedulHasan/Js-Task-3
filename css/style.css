@@ -66,3 +66,26 @@
 .delete-btn {
     cursor: pointer;
 }
+.cart {
+    height: 100vh;
+    margin-top: 500px;
+    position: fixed;
+    top: 40px;
+    left: 10;;
+}
+.cart-cost {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    width: 35vw;
+}
+.pay {
+    width: 100%;
+    font-size: 18px;
+    padding: 8px;
+    background-color: #7872B9;
+    color: #fff;
+    border-radius: 2px;
+    border: 0;
+}
